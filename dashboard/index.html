@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanitary Napkin Vending Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Sanitary Napkin Vending Machine Dashboard</h1>
+        <div id="status">
+            <p>Current Stock Level: <span id="stockLevel">Loading...</span></p>
+            <p>Last Updated: <span id="lastUpdated">Loading...</span></p>
+        </div>
+        <button onclick="restockMachine()">Restock Machine</button>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+    <script>
+        // Firebase setup
+        var firebaseConfig = {
+            apiKey: "your-api-key",
+            authDomain: "your-project-id.firebaseapp.com",
+            databaseURL: "https://your-database-name.firebaseio.com",
+            projectId: "your-project-id",
+            storageBucket: "your-project-id.appspot.com",
+            messagingSenderId: "your-sender-id",
+            appId: "your-app-id"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        var database = firebase.database();
+
+        // Get stock level from Firebase
+        var stockLevelRef = database.ref("vendingMachine/stockLevel");
+        stockLevelRef.on("value", function(snapshot) {
+            var stockLevel = snapshot.val();
+            document.getElementById("stockLevel").textContent = stockLevel;
+            var lastUpdated = new Date().toLocaleString();
+            document.getElementById("lastUpdated").textContent = lastUpdated;
+        });
+
+        // Function to simulate restocking the machine
+        function restockMachine() {
+            stockLevelRef.set(50);  // Set stock to 50 napkins
+        }
+    </script>
+</body>
+</html>
