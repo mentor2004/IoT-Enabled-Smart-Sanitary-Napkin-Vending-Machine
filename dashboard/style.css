@@ -1,0 +1,81 @@
+/* Soft aesthetic background */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", Arial, sans-serif;
+    background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+    height: 100%;
+}
+
+/* White glass-effect box */
+.container {
+    max-width: 500px;
+    margin: 80px auto;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    text-align: center;
+    animation: fadeIn 1s ease-out;
+}
+
+/* Dashboard title */
+h1 {
+    font-size: 26px;
+    color: #b40068;
+    font-weight: bold;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+/* Status text */
+#status p {
+    font-size: 18px;
+    margin: 12px 0;
+    color: #6d004f;
+}
+
+#stockLevel {
+    font-weight: 700;
+    color: #e00088;
+}
+
+#lastUpdated {
+    font-weight: 600;
+    color: #7e3b70;
+}
+
+/* Cute pink button */
+button {
+    background: #ff5fa2;
+    background: linear-gradient(135deg, #ff5fa2, #ff2e93);
+    border: none;
+    color: white;
+    padding: 14px 22px;
+    border-radius: 12px;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    margin-top: 25px;
+    transition: 0.3s ease-in-out;
+    box-shadow: 0 4px 10px rgba(255, 0, 128, 0.3);
+}
+
+button:hover {
+    transform: scale(1.07);
+    background: linear-gradient(135deg, #ff2e93, #ff5fa2);
+    box-shadow: 0 6px 14px rgba(255, 0, 128, 0.4);
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
